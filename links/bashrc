@@ -107,10 +107,9 @@ fi
 #export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 #powerline
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+	    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
 fi
-
 
 
 # enable programmable completion features (you don't need to enable

@@ -1,6 +1,6 @@
-YouCompleteMe
 auto-pairs
 minibufexpl.vim
 neobundle.vim
 nerdtree
 python-syntax
+vim-autoformat

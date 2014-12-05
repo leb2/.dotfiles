@@ -1,3 +1,5 @@
+set nocompatible 
+
 "SETTINGS
 "Another commen
 set t_Co=256
@@ -5,7 +7,6 @@ set incsearch
 set ignorecase 
 set smartcase
 set smarttab
-set smartindent
 set scrolloff=5
 set number
 set showmatch
@@ -14,6 +15,8 @@ set shiftwidth=4
 set tabstop=4
 set foldmethod=indent
 set foldlevel=99
+set autoindent
+filetype plugin indent on
 filetype on 
 
 
@@ -26,6 +29,31 @@ map <S-h> b
 map j gj
 map k gk
 set backspace=indent,eol,start
+map <CR> o<esc>k
+
+autocmd InsertEnter * :let x = system('echo 255 > /sys/class/leds/*/brightness')
+autocmd InsertLeave * :let x =  system('echo 0   > /sys/class/leds/*/brightness')
+
+
+" Return cursor to original location on load
+autocmd BufReadPost * normal `""`
+
+imap jk <esc>l
+imap kj <esc>l
+imap jj <esc>l
+imap kk <esc>l
+imap JK <esc>l
+imap JJ <esc>l
+imap KJ <esc>l
+imap KK <esc>l
+imap jK <esc>l
+imap Jk <esc>l
+imap Kj <esc>l
+imap kJ <esc>l
+imap jJ <esc>l
+imap Jj <esc>l
+imap kK <esc>l
+imap kK <esc>l
 
 "Undoing
 map <C-z> u
@@ -42,9 +70,11 @@ noremap <silent> <C-h> <C-w><7
 noremap <silent> <C-l> <C-w>>7
 
 "Cycling through windows
-noremap <silent> <C-w> :q<CR>
+"noremap <silent> <C-w> :q<CR>
 noremap <C-j> <C-w>W
 noremap <C-k> <C-w>w
+
+let NERDTreeIgnore = ['\.pyc$']
 
 
 
@@ -52,7 +82,6 @@ noremap <C-k> <C-w>w
 "STATUSBAR / AIRLINE
 let g:airline#extensions#tabline#enabled = 1
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 if !exists('g:airline_symbols')
@@ -160,10 +189,11 @@ func! DeleteTrailingWS()
  NeoBundle 'jiangmiao/auto-pairs' 
  NeoBundle 'scrooloose/nerdtree'
  NeoBundle 'hdima/python-syntax'
- NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'Valloric/YouCompleteMe'
 "NeoBundle 'bling/vim-airline'
 "NeoBundle 'scrooloose/syntastic'
  NeoBundle 'fholgado/minibufexpl.vim'
+ NeoBundle 'Chiel92/vim-autoformat'
  call neobundle#end()
 
  " Required:

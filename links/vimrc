@@ -1,4 +1,8 @@
+filetype plugin indent on
+syntax enable
+
 set nocompatible 
+
 
 "SETTINGS
 "Another commen
